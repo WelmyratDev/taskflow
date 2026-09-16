@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS timesheet(
+    id BIGSERIAL PRIMARY KEY,
+    task_id BIGINT NOT NULL
+        REFERENCES task(id) ON DELETE CASCADE,
+    account_id BIGINT NOT NULL
+        REFERENCES account(id) ON DELETE CASCADE,
+    started_at TIMESTAMPTZ NOT NULL,
+    ended_at TIMESTAMPTZ NULL,
+    description TEXT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

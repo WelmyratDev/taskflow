@@ -1,0 +1,38 @@
+2026-09-10 18:42:00 | INFO | uvicorn.error | server.py:94 | Started server process [2929]
+2026-09-10 18:42:00 | INFO | uvicorn.error | on.py:48 | Waiting for application startup.
+2026-09-10 18:42:00 | INFO | uvicorn.error | on.py:62 | Application startup complete.
+2026-09-10 18:45:09 | INFO | uvicorn.error | server.py:273 | Shutting down
+2026-09-10 18:45:09 | INFO | uvicorn.error | on.py:67 | Waiting for application shutdown.
+2026-09-10 18:45:09 | INFO | uvicorn.error | on.py:76 | Application shutdown complete.
+2026-09-10 18:45:09 | INFO | uvicorn.error | server.py:104 | Finished server process [2929]
+2026-09-10 18:45:14 | INFO | uvicorn.error | server.py:94 | Started server process [2994]
+2026-09-10 18:45:14 | INFO | uvicorn.error | on.py:48 | Waiting for application startup.
+2026-09-10 18:45:14 | INFO | uvicorn.error | on.py:62 | Application startup complete.
+2026-09-10 18:45:33 | INFO | uvicorn.access | h11_impl.py:482 | 127.0.0.1:36920 - "GET /docs HTTP/1.1" 200
+2026-09-10 18:45:33 | INFO | uvicorn.access | h11_impl.py:482 | 127.0.0.1:36920 - "GET /openapi.json HTTP/1.1" 200
+2026-09-10 18:45:35 | INFO | uvicorn.access | h11_impl.py:482 | 127.0.0.1:36920 - "GET /sw.js HTTP/1.1" 404
+2026-09-10 18:46:04 | INFO | uvicorn.access | h11_impl.py:482 | 127.0.0.1:36294 - "GET /sw.js HTTP/1.1" 404
+2026-09-10 18:46:11 | INFO | uvicorn.error | server.py:273 | Shutting down
+2026-09-10 18:46:11 | INFO | uvicorn.error | on.py:67 | Waiting for application shutdown.
+2026-09-10 18:46:11 | INFO | uvicorn.error | on.py:76 | Application shutdown complete.
+2026-09-10 18:46:11 | INFO | uvicorn.error | server.py:104 | Finished server process [2994]
+2026-09-10 19:08:00 | INFO     | taskflow.http                  | request_id=1b4bec78-8814-4206-a215-969e05b33117 | GET /docs | status=200 | 0.46ms
+2026-09-10 19:08:00 | INFO     | taskflow.http                  | request_id=e1d5b52b-2ff5-4973-aad1-c7984d9004e6 | GET /openapi.json | status=200 | 1.00ms
+2026-09-10 19:08:02 | INFO     | taskflow.http                  | request_id=bdece9c2-b683-44a3-8754-a379b3e6e656 | GET /sw.js | status=404 | 0.25ms
+2026-09-10 19:08:31 | INFO     | taskflow.http                  | request_id=5384c4a4-fc46-493b-8fed-aa3447c50412 | GET /sw.js | status=404 | 0.20ms
+2026-09-10 19:12:33 | INFO     | taskflow.http                  | request_id=6406e6cd-494c-43bf-82f2-db4f01fe8ffd | GET /docs | status=200 | 0.72ms
+2026-09-10 19:12:33 | INFO     | taskflow.http                  | request_id=67317ea5-db5e-4945-a34b-e74c139ea0fa | GET /openapi.json | status=200 | 1.41ms
+2026-09-10 19:12:35 | INFO     | taskflow.http                  | request_id=0b4291e0-5426-45f1-b8a4-9f7df8325e71 | GET /sw.js | status=404 | 0.26ms
+2026-09-10 19:12:36 | INFO     | taskflow.http                  | request_id=c2694f20-72d5-4fb6-ac13-6915ba7f6341 | GET / | status=200 | 12.36ms
+2026-09-10 19:12:40 | INFO     | taskflow.http                  | request_id=9ab5a8f3-1668-4104-9f38-8751239ee4ff | GET / | status=200 | 1.01ms
+2026-09-10 19:12:41 | INFO     | taskflow.http                  | request_id=48f59f52-a80b-4582-9fd9-edbf074e1dfc | GET / | status=200 | 0.72ms
+2026-09-10 19:12:41 | INFO     | taskflow.http                  | request_id=fbf0e243-789b-4b97-a26e-084ea4ec4812 | GET / | status=200 | 0.95ms
+2026-09-10 19:12:41 | INFO     | taskflow.http                  | request_id=db6049b1-e073-4621-880d-9a2ff09d3f88 | GET / | status=200 | 0.87ms
+2026-09-10 19:12:42 | INFO     | taskflow.http                  | request_id=44f46e74-8626-4039-a1c7-13a3eead8062 | GET / | status=200 | 0.74ms
+2026-09-10 19:13:13 | INFO     | taskflow.http                  | request_id=d8f7eb5f-2c0e-4bd9-8a47-f4a6583f8deb | GET /sw.js | status=404 | 0.23ms
+2026-09-10 19:28:06 | INFO     | taskflow.http                  | request_id=18e6fde0-a9d5-4910-a0b5-a6d5580e21f4 | GET / | status=200 | 0.65ms
+2026-09-10 19:28:32 | INFO     | taskflow.http                  | request_id=7836d937-0a2c-49bb-8268-010ee82222cb | GET /docs | status=200 | 0.44ms
+2026-09-10 19:28:32 | INFO     | taskflow.http                  | request_id=89e874eb-3c52-4442-9171-0fcd4fdc8122 | GET /openapi.json | status=200 | 0.55ms
+2026-09-10 19:28:34 | INFO     | taskflow.http                  | request_id=180d968e-9bf7-4939-bcf1-567a63aa8e17 | GET /sw.js | status=404 | 0.31ms
+2026-09-10 19:28:37 | INFO     | taskflow.http                  | request_id=d2d85abb-d6c2-4bc6-a3b6-5aa2dfa497e0 | GET / | status=200 | 1.12ms
+2026-09-10 19:29:08 | INFO     | taskflow.http                  | request_id=e3dfe95c-d6b5-48c2-a6eb-78ef42afe31d | GET /sw.js | status=404 | 0.30ms
