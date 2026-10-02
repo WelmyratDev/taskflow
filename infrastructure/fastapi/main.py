@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from shared.logging.logger import setup_logging
 from infrastructure.fastapi.middleware.request_logging import request_logging_middleware
 from infrastructure.asyncpg import Asyncpg
+from api.controllers import router as main_router
 import time
 import logging
 
@@ -13,11 +14,6 @@ VERSION = "1.0.0"
 setup_logging()
 
 logger = logging.getLogger(__name__)
-
-app = FastAPI(
-    title=APP_TITLE,
-    version=VERSION
-)
 
 db = Asyncpg()
 
@@ -39,12 +35,17 @@ async def lifespan(app: FastAPI):
         "Stopping %s",
         APP_TITLE,
     )
-    
+
+
+app = FastAPI(
+    title=APP_TITLE,
+    version=VERSION,
+    lifespan=lifespan,
+)
 
 app.middleware("http")(
     request_logging_middleware
 )
-
 
 @app.get("/")
 def root(request: Request):
@@ -52,3 +53,6 @@ def root(request: Request):
         "message": "TaskFlow Backend is running",
         "request_id": request.state.request_id,
     }
+
+
+app.include_router(main_router)

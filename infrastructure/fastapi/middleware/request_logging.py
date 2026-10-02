@@ -5,7 +5,7 @@ import uuid
 from fastapi import Request
 
 
-logger = logging.getLogger("taskflow.http")
+logger = logging.getLogger(__name__)
 
 
 async def request_logging_middleware(
