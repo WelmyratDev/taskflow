@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
 
-EXPIRES_DAYS = 7  # Default session expiration in days
+EXPIRES_DAYS = 30  # Default session expiration in days
 
 
 @dataclass
@@ -10,7 +10,7 @@ class AccountSession:
     id: int
     account_id: int
     session_token_hash: str
-    created_at: datetime
+    created_at: datetime | None
     expires_at: datetime | None
     last_activity: datetime | None
     ip_address: str

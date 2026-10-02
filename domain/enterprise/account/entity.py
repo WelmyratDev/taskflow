@@ -9,9 +9,9 @@ class Account:
     username: str
     email: str
     password: str
-    last_activity: datetime
-    created_at: datetime
-    updated_at: datetime
+    last_activity: datetime | None
+    created_at: datetime | None
+    updated_at: datetime | None
     role: str
     
     def validate(self) -> None:
