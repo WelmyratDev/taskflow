@@ -1,7 +1,7 @@
 import asyncpg
 
 DATABASE_URL = (
-
+    "postgresql://taskflow_user:taskflow_password@localhost:5432/taskflow_db"
 )
 
 class Asyncpg:
@@ -20,6 +20,7 @@ class Asyncpg:
                 min_size=1,
                 max_size=10
             )
+            print(self._pool)
         if self._pool is None:
             raise ValueError("Could not connect to Postgres")
     

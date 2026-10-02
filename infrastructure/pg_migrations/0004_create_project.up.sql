@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS project(
         NOT NULL REFERENCES account(id) ON DELETE SET NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT NULL,
-    timesheet NULL,
+    timesheet TIMESTAMPTZ NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     status VARCHAR(100) NOT NULL DEFAULT 'active'
