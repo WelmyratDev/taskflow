@@ -10,13 +10,14 @@ from infrastructure.fastapi.exceptions import AppException
 from shared.error import ErrorType
 from shared.security import hash_password, hash_session_token, verify_password
 from shared.utils import generate_session_token, verify_session_token
+from . import inputs
 from typing import Callable
 from datetime import timezone, timedelta
 
-exception_tag = "AuthSession"
+exception_tag = "AuthSessionUseCase"
 
 
-class AuthSession:
+class AuthSessionUseCase:
 
     def __init__(self, 
         session_repo: SessionAccountPgRepository,
@@ -40,7 +41,7 @@ class AuthSession:
                 key="session_id",
                 value=session_token,
                 httponly=True,
-                secure=True,
+                secure=False,
                 samesite="lax",
                 max_age=60 * 60 * 24 * 30,
                 path="/",
@@ -60,11 +61,10 @@ class AuthSession:
         response: Callable
     ):
         try:
-            account = account_entity.Account(
+            account = inputs.AccountLogin(
                 username=username,
                 password=password
             )
-            account.validate()
             existing_account = await self._account_repo.get_by_username_and_email(
                 username=account.username
             )
@@ -103,17 +103,16 @@ class AuthSession:
         role: str
     ):
         try:
-            account = account_entity.Account(
+            account = inputs.AccountCreate(
                 username=username,
                 email=email,
                 password=password,
                 role=role
             )
-            account.validate()
         except Exception as e:
             raise AppException(
                 loc=f"{exception_tag}.register_account",
-                msg=f"Account validation failed: {e}",
+                msg=f"Account validation failed: {e} mARK",
                 type=ErrorType.INTERNAL_SERVER_ERROR,
             ) from e
 
@@ -144,6 +143,7 @@ class AuthSession:
                 role=new_account.role,
                 updated_at=new_account.updated_at
             )
+            return_account.validate()
         except Exception as e:
             raise AppException(
                 loc=f"{exception_tag}.register_account",
