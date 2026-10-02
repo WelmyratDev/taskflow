@@ -14,7 +14,7 @@ LOGGING_CONFIG = {
     "disable_existing_loggers": False,
 
     "formatters": {
-        "taskflow": {
+        "default": {
             "format": (
                 "%(asctime)s | "
                 "%(levelname)-8s | "
@@ -29,14 +29,14 @@ LOGGING_CONFIG = {
         "console": {
             "class": "logging.StreamHandler",
             "level": "INFO",
-            "formatter": "taskflow",
+            "formatter": "default",
             "stream": "ext://sys.stdout",
         },
 
         "file": {
             "class": "logging.handlers.RotatingFileHandler",
             "level": "INFO",
-            "formatter": "taskflow",
+            "formatter": "default",
             "filename": str(LOG_DIR / "app.log"),
             "maxBytes": 10 * 1024 * 1024,
             "backupCount": 5,
@@ -45,19 +45,30 @@ LOGGING_CONFIG = {
     },
 
     "loggers": {
-        "taskflow": {
-            "handlers": [
-                "console",
-                "file",
-            ],
+        # Uvicorn
+        "uvicorn": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+
+        "uvicorn.error": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+
+        "uvicorn.access": {
+            "handlers": ["console", "file"],
             "level": "INFO",
             "propagate": False,
         },
     },
 
+    # Все остальные Python loggers
     "root": {
-        "handlers": [],
-        "level": "WARNING",
+        "handlers": ["console", "file"],
+        "level": "INFO",
     },
 }
 
