@@ -10,10 +10,11 @@ pg-login:
 	psql -U taskflow_user -d taskflow_db -h localhost -p 5432
 
 
-uvicorn:
+uvicorn-logger:
 	uvicorn infrastructure.fastapi.main:app --reload --log-config shared/logging/uvicorn.json
 
-
+uvicorn:
+	uvicorn infrastructure.fastapi.main:app --reload
 
 migrate-down:
 	psql -h $(POSTGRES_HOST) -p $(POSTGRES_PORT) -U $(POSTGRES_USER) -d $(POSTGRES_DB) \
