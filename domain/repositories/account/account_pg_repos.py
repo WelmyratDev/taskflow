@@ -73,6 +73,43 @@ class AccountPgRepository:
                 type=ErrorType.INTERNAL_SERVER_ERROR,
             ) from e
 
+
+    async def list_of_accounts(self) -> list[account_entity.Account]:
+        
+        try:
+            stmt_select_clause = """
+                SELECT id, username, email, password, last_activity, created_at, updated_at, role
+                FROM account
+            """
+            accounts = await self._conn.fetch(stmt_select_clause)
+        except Exception as e:
+            raise AppException(
+                loc=f"{exception_tag}.list_of_accounts",
+                msg=f"Failed to retrieve accounts: {e}",
+                type=ErrorType.INTERNAL_SERVER_ERROR,
+            ) from e
+
+        try:
+            return [
+                account_entity.Account(
+                    id=row["id"],
+                    username=row["username"],
+                    email=row["email"],
+                    password=row["password"],
+                    last_activity=row["last_activity"],
+                    created_at=row["created_at"],
+                    updated_at=row["updated_at"],
+                    role=row["role"],
+                )
+                for row in accounts
+            ]
+        except Exception as e:
+            raise AppException(
+                loc=f"{exception_tag}.list_of_accounts",
+                msg=f"Failed to create account entities: {e}",
+                type=ErrorType.INTERNAL_SERVER_ERROR,
+            ) from e
+
     async def get_by_username_and_email(self, username: str, email: str) -> bool:
         try:
             stmt_select_clause = """
